@@ -4,6 +4,7 @@ import { Button } from '@nextui-org/react';
 import { useEffect, useState, type ReactElement } from 'react';
 
 import Location from '@/components/Location/Location';
+import Suits from '@/components/Suits/Suits';
 import Villains from '@/components/Villains/Villains';
 
 const App = (): ReactElement => {
@@ -26,12 +27,11 @@ const App = (): ReactElement => {
 
   if (currentPage === 'villains') ui = <Villains setCurrentPage={setCurrentPage} setOpacity={setOpacity} />;
   if (currentPage === 'location') ui = <Location setCurrentPage={setCurrentPage} setOpacity={setOpacity} />;
+  if (currentPage === 'suits') ui = <Suits setCurrentPage={setCurrentPage} setOpacity={setOpacity} />;
 
   useEffect(() => {
     setOpacity('opacity-100');
   }, [currentPage]);
-
-  console.log(opacity);
 
   return (
     <>

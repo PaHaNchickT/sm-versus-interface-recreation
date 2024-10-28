@@ -9,7 +9,7 @@ import { COMIC_DATA, COMIC_STYLES, CONTROL_PANEL_COMIC } from '@/constants/const
 
 import ControlPanel from '../ControlPanel/ControlPanel';
 
-const Location = (props: {
+const Suits = (props: {
   setCurrentPage: Dispatch<SetStateAction<string>>;
   setOpacity: Dispatch<SetStateAction<string>>;
 }): ReactElement => {
@@ -100,7 +100,7 @@ const Location = (props: {
           onPress={() => {
             props.setOpacity('opacity-0');
             setTimeout(() => {
-              props.setCurrentPage('suits');
+              props.setCurrentPage('suit');
             }, 300);
           }}
         >
@@ -111,4 +111,4 @@ const Location = (props: {
   );
 };
 
-export default Location;
+export default Suits;
