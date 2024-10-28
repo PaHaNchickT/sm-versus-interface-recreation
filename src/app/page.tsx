@@ -9,7 +9,7 @@ const App = (): ReactElement => {
   const [clicked, setClicked] = useState(false);
   return (
     <>
-      <main className="self-center">
+      <main className="self-center flex flex-col items-center gap-10">
         {clicked ? (
           <Villains />
         ) : (
