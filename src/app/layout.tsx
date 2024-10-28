@@ -6,8 +6,8 @@ import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 
 export const metadata: Metadata = {
-  title: 'Testik',
-  description: 'MVP platform for students testing',
+  title: 'SM: Versus',
+  description: 'Interface recreation from Spider-Man: Versus cancelled game',
 };
 
 const RootLayout = async ({
