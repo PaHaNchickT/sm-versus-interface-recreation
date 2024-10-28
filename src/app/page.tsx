@@ -13,7 +13,7 @@ const App = (): ReactElement => {
         {clicked ? (
           <Villains />
         ) : (
-          <Button size="lg" color="danger" onPress={() => setClicked(true)}>
+          <Button size="lg" className="bg-[#c30000] text-white" onPress={() => setClicked(true)}>
             Start
           </Button>
         )}

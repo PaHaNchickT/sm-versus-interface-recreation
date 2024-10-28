@@ -20,8 +20,8 @@ const RootLayout = async ({
 }>): Promise<ReactElement> => {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className={comfortaa.className}>
-        <div className="w-screen min-h-screen flex flex-col justify-between">
+      <body className={`${comfortaa.className} text-white`}>
+        <div className="w-screen min-h-screen flex flex-col justify-between bg-black">
           <Header />
           {children}
           <Footer />
