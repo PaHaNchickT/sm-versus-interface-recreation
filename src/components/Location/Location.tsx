@@ -3,20 +3,28 @@
 import { Button } from '@nextui-org/react';
 import Image from 'next/image';
 import type { Dispatch, SetStateAction } from 'react';
-import { useState, type ReactElement } from 'react';
+import { useEffect, useState, type ReactElement } from 'react';
 
 import { COMIC_DATA, COMIC_STYLES, CONTROL_PANEL_COMIC } from '@/constants/constants';
 
 import ControlPanel from '../ControlPanel/ControlPanel';
 
-const Location = (props: { setCurrentPage: Dispatch<SetStateAction<string>> }): ReactElement => {
+const Location = (props: {
+  setCurrentPage: Dispatch<SetStateAction<string>>;
+  setOpacity: Dispatch<SetStateAction<string>>;
+}): ReactElement => {
+  const [opacity, setOpacity] = useState('opacity-100');
   const [cover, setCover] = useState(0);
+
+  useEffect(() => {
+    setOpacity('opacity-100');
+  }, [cover]);
 
   return (
     <>
       <h2 className="text-2xl font-black">Choose story</h2>
       <div className="bg-[url('/images/modal-bg.jpg')] h-[300px] w-[500px] flex justify-between px-10 gap-5">
-        <div className="my-10 w-[260px] text-xs flex flex-col justify-between text-justify">
+        <div className={`transition-all ${opacity} my-10 w-[260px] text-xs flex flex-col justify-between text-justify`}>
           <p className="font-black">{COMIC_DATA[cover].name}</p>
           <div>
             <p className="flex gap-3">
@@ -64,12 +72,45 @@ const Location = (props: { setCurrentPage: Dispatch<SetStateAction<string>> }): 
       </div>
       <ControlPanel panelData={CONTROL_PANEL_COMIC} />
       <div className="flex gap-5 absolute bottom-[65px]">
-        <Button onPress={() => cover && setCover((e) => (e -= 1))}>{'<'}</Button>
-        <Button onPress={() => cover < COMIC_DATA.length - 1 && setCover((e) => (e += 1))}>{'>'}</Button>
-        <Button onPress={() => props.setCurrentPage('suit')}>Next</Button>
+        <Button
+          onPress={() => {
+            if (cover) {
+              setOpacity('opacity-0');
+              setTimeout(() => {
+                setCover((e) => (e -= 1));
+              }, 150);
+            }
+          }}
+        >
+          {'<'}
+        </Button>
+        <Button
+          onPress={() => {
+            if (cover < COMIC_DATA.length - 1) {
+              setOpacity('opacity-0');
+              setTimeout(() => {
+                setCover((e) => (e += 1));
+              }, 150);
+            }
+          }}
+        >
+          {'>'}
+        </Button>
+        <Button
+          onPress={() => {
+            props.setOpacity('opacity-0');
+            setTimeout(() => {
+              props.setCurrentPage('suit');
+            }, 300);
+          }}
+        >
+          Next
+        </Button>
       </div>
     </>
   );
 };
 
 export default Location;
+
+//

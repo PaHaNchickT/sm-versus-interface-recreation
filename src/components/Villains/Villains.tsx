@@ -9,7 +9,10 @@ import { CONTROL_PANEL_VILLAINS, VILLAINS_PATH, VILLAINS_STYLES } from '@/consta
 
 import ControlPanel from '../ControlPanel/ControlPanel';
 
-const Villains = (props: { setCurrentPage: Dispatch<SetStateAction<string>> }): ReactElement => {
+const Villains = (props: {
+  setCurrentPage: Dispatch<SetStateAction<string>>;
+  setOpacity: Dispatch<SetStateAction<string>>;
+}): ReactElement => {
   const [villain, setVillain] = useState(4);
 
   return (
@@ -47,7 +50,16 @@ const Villains = (props: { setCurrentPage: Dispatch<SetStateAction<string>> }): 
       <div className="flex gap-5 absolute bottom-[65px]">
         <Button onPress={() => villain && setVillain((e) => (e -= 1))}>{'<'}</Button>
         <Button onPress={() => villain < VILLAINS_PATH.length - 1 && setVillain((e) => (e += 1))}>{'>'}</Button>
-        <Button onPress={() => props.setCurrentPage('location')}>Next</Button>
+        <Button
+          onPress={() => {
+            props.setOpacity('opacity-0');
+            setTimeout(() => {
+              props.setCurrentPage('location');
+            }, 300);
+          }}
+        >
+          Next
+        </Button>
       </div>
     </>
   );
