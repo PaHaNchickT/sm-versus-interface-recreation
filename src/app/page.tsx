@@ -3,6 +3,7 @@
 import { Button } from '@nextui-org/react';
 import { useState, type ReactElement } from 'react';
 
+import Location from '@/components/Location/Location';
 import Villains from '@/components/Villains/Villains';
 
 const App = (): ReactElement => {
@@ -14,7 +15,7 @@ const App = (): ReactElement => {
   );
 
   if (currentPage === 'villains') ui = <Villains setCurrentPage={setCurrentPage} />;
-  if (currentPage === 'location') ui = <p>Location</p>;
+  if (currentPage === 'location') ui = <Location setCurrentPage={setCurrentPage} />;
 
   return (
     <>

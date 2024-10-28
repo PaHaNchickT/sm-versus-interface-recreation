@@ -5,7 +5,7 @@ import Image from 'next/image';
 import type { Dispatch, SetStateAction } from 'react';
 import { useState, type ReactElement } from 'react';
 
-import { VILLAINS_PATH, VILLAINS_STYLES } from '@/constants/constants';
+import { CONTROL_PANEL_VILLAINS, VILLAINS_PATH, VILLAINS_STYLES } from '@/constants/constants';
 
 import ControlPanel from '../ControlPanel/ControlPanel';
 
@@ -33,7 +33,7 @@ const Villains = (props: { setCurrentPage: Dispatch<SetStateAction<string>> }): 
           </div>
         </div>
       </div>
-      <ControlPanel />
+      <ControlPanel panelData={CONTROL_PANEL_VILLAINS} />
       <div className="flex gap-5 absolute bottom-[65px]">
         <Button onPress={() => villain && setVillain((e) => (e -= 1))}>{'<'}</Button>
         <Button onPress={() => villain < VILLAINS_PATH.length - 1 && setVillain((e) => (e += 1))}>{'>'}</Button>
