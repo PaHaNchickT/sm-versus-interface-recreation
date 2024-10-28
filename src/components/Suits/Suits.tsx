@@ -5,7 +5,7 @@ import Image from 'next/image';
 import type { Dispatch, SetStateAction } from 'react';
 import { useEffect, useState, type ReactElement } from 'react';
 
-import { COMIC_DATA, COMIC_STYLES, CONTROL_PANEL_COMIC } from '@/constants/constants';
+import { CONTROL_PANEL_SUITS, SUIT_STATS, SUITS_DATA, SUITS_STYLES } from '@/constants/constants';
 
 import ControlPanel from '../ControlPanel/ControlPanel';
 
@@ -14,70 +14,70 @@ const Suits = (props: {
   setOpacity: Dispatch<SetStateAction<string>>;
 }): ReactElement => {
   const [opacity, setOpacity] = useState('opacity-100');
-  const [cover, setCover] = useState(0);
+  const [suit, setSuit] = useState(4);
 
   useEffect(() => {
     setOpacity('opacity-100');
-  }, [cover]);
+  }, [suit]);
 
   return (
     <>
-      <h2 className="text-2xl font-black">Choose story</h2>
-      <div className="bg-[url('/images/modal-bg.jpg')] h-[300px] w-[500px] flex justify-between px-10 gap-5">
-        <div className={`transition-all ${opacity} my-10 w-[260px] text-xs flex flex-col justify-between text-justify`}>
-          <p className="font-black">{COMIC_DATA[cover].name}</p>
-          <div>
-            <p className="flex gap-3">
-              <span className="font-black">Writer:</span>
-              {COMIC_DATA[cover].writer}
-            </p>
-            <p className="flex gap-3">
-              <span className="font-black">Penciller:</span>
-              {COMIC_DATA[cover].penciller}
-            </p>
-          </div>
-          <p>
-            <span className="font-black mr-3">Synopsis:</span>
-            {COMIC_DATA[cover].synopsis}
-          </p>
-        </div>
-        <div className="w-[120px] h-full overflow-hidden flex items-center justify-center relative">
-          <p
-            className={`absolute z-[1] top-5 text-3xl [text-shadow:0_0_5px_black] rotate-90 transition-all ${!cover ? 'opacity-0' : 'opacity-100'}`}
-          >
-            {'<'}
-          </p>
-          <p
-            className={`absolute z-[1] bottom-5 text-3xl [text-shadow:0_0_5px_black] rotate-90 transition-all ${cover >= COMIC_DATA.length - 1 ? 'opacity-0' : 'opacity-100'}`}
-          >
-            {'>'}
-          </p>
-          <div className="w-full h-full [mask-image:url('/images/mask-vert.png')] [mask-repeat:no-repeat] [mask-size:cover]">
-            <div
-              className={`${COMIC_STYLES[cover]} right-0 flex flex-col items-center gap-5 absolute w-[120px] h-[441px] transition-all`}
-            >
-              {COMIC_DATA.map((item, index) => (
-                <Image
-                  key={index}
-                  alt={`villain-${index}`}
-                  src={item.img}
-                  width={cover === index ? 120 : 70}
-                  height={cover === index ? 185 : 108}
-                  className="transition-all"
-                />
+      <h2 className="text-2xl font-black">Choose suit</h2>
+      <div className="bg-[url('/images/modal-bg.jpg')] h-[300px] w-[500px] relative flex items-center">
+        <p
+          className={`absolute z-[1] left-5 text-3xl [text-shadow:0_0_5px_black] transition-all ${!suit ? 'opacity-0' : 'opacity-100'}`}
+        >
+          {'<'}
+        </p>
+        <p
+          className={`absolute z-[1] right-5 text-3xl [text-shadow:0_0_5px_black] transition-all ${suit >= SUITS_DATA.length - 1 ? 'opacity-0' : 'opacity-100'}`}
+        >
+          {'>'}
+        </p>
+        <div className={`${opacity} transition-all absolute left-5 top-5 w-[233px] flex flex-col gap-3 z-[1]`}>
+          <p className="font-black">{SUITS_DATA[suit].name}</p>
+          <div className="flex w-full justify-between gap-5">
+            <div className="flex flex-col gap-2">
+              {SUIT_STATS.map((stat, index) => (
+                <div key={index}>
+                  <p className="text-xs">{stat}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col gap-2 w-full">
+              {SUITS_DATA[suit].stats.map((data, index) => (
+                <div key={index}>
+                  <div className="bg-black w-full h-[16px]">
+                    <div className={`${data} bg-[#c30000] h-full`}></div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         </div>
+        <div className="pb-5 w-full h-full [mask-image:url('/images/mask.png')] [mask-repeat:no-repeat] [mask-size:cover] [mask-position:center] overflow-hidden flex items-end relative">
+          <div className={`${SUITS_STYLES[suit]} flex items-end gap-5 absolute w-[519px] h-[120px] transition-all`}>
+            {SUITS_DATA.map((item, index) => (
+              <Image
+                key={index}
+                alt={`suit-${index}`}
+                src={item.img}
+                width={250}
+                height={250}
+                className={`transition-all h-auto ${suit === index ? 'w-[117px]' : 'w-[47px]'}`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-      <ControlPanel panelData={CONTROL_PANEL_COMIC} />
+      <ControlPanel panelData={CONTROL_PANEL_SUITS} />
       <div className="flex gap-5 absolute bottom-[65px]">
         <Button
           onPress={() => {
-            if (cover) {
+            if (suit) {
               setOpacity('opacity-0');
               setTimeout(() => {
-                setCover((e) => (e -= 1));
+                setSuit((e) => (e -= 1));
               }, 150);
             }
           }}
@@ -86,10 +86,10 @@ const Suits = (props: {
         </Button>
         <Button
           onPress={() => {
-            if (cover < COMIC_DATA.length - 1) {
+            if (suit < SUITS_DATA.length - 1) {
               setOpacity('opacity-0');
               setTimeout(() => {
-                setCover((e) => (e += 1));
+                setSuit((e) => (e += 1));
               }, 150);
             }
           }}

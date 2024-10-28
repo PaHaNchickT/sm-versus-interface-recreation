@@ -52,6 +52,21 @@ export const CONTROL_PANEL_COMIC = [
   },
 ];
 
+export const CONTROL_PANEL_SUITS = [
+  {
+    text: 'play',
+    img: '/images/btn-A.png',
+  },
+  {
+    text: 'show upgrades',
+    img: '/images/btn-X.png',
+  },
+  {
+    text: 'back',
+    img: '/images/btn-B.png',
+  },
+];
+
 export const COMIC_DATA = [
   {
     name: 'The Amazing Spider-Man (1963) #14',
@@ -86,4 +101,56 @@ export const COMIC_STYLES = [
   'top-[calc((100%-441px)/2+128px)]',
   'top-[calc((100%-441px)/2)]',
   'top-[calc((100%-441px)/2-128px)]',
+];
+
+export const SUIT_STATS = ['power:', 'speed:', 'stealth:'];
+
+export const SUITS_DATA = [
+  {
+    name: 'Classic Suit',
+    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    img: '/images/suit-01.png',
+  },
+  {
+    name: 'Noir Suit',
+    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    img: '/images/suit-02.png',
+  },
+  {
+    name: 'Scarlet Spider Suit',
+    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    img: '/images/suit-03.png',
+  },
+  {
+    name: 'Spider-Punk Suit',
+    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    img: '/images/suit-04.png',
+  },
+  {
+    name: 'Spider-Man 2099 Suit',
+    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    img: '/images/suit-05.png',
+  },
+  {
+    name: 'Future Foundation Suit',
+    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    img: '/images/suit-06.png',
+  },
+  {
+    name: 'Bombastic Bag-Man Suit',
+    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    img: '/images/suit-07.png',
+  },
+];
+
+export const SUITS_STYLES = [
+  'left-[calc((100%-519px)/2+278px)]',
+  'left-[calc((100%-519px)/2+211px)]',
+  'left-[calc((100%-519px)/2+144px)]',
+  'left-[calc((100%-519px)/2+77px)]',
+  'left-[calc((100%-519px)/2+10px)]',
+  'left-[calc((100%-519px)/2-57px)]',
+  'left-[calc((100%-519px)/2-124px)]',
+  'left-[calc((100%-519px)/2-191px)]',
+  'left-[calc((100%-519px)/2-258px)]',
 ];

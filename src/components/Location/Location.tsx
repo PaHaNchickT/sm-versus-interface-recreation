@@ -14,7 +14,7 @@ const Location = (props: {
   setOpacity: Dispatch<SetStateAction<string>>;
 }): ReactElement => {
   const [opacity, setOpacity] = useState('opacity-100');
-  const [cover, setCover] = useState(0);
+  const [cover, setCover] = useState(1);
 
   useEffect(() => {
     setOpacity('opacity-100');
@@ -59,7 +59,7 @@ const Location = (props: {
               {COMIC_DATA.map((item, index) => (
                 <Image
                   key={index}
-                  alt={`villain-${index}`}
+                  alt={`cover-${index}`}
                   src={item.img}
                   width={cover === index ? 120 : 70}
                   height={cover === index ? 185 : 108}
