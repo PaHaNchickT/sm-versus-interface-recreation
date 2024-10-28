@@ -33,20 +33,32 @@ const Location = (props: { setCurrentPage: Dispatch<SetStateAction<string>> }): 
             {COMIC_DATA[cover].synopsis}
           </p>
         </div>
-        <div className="w-[120px] h-full overflow-hidden flex items-center relative [mask-image:url('/images/mask-vert.png')] [mask-repeat:no-repeat] [mask-size:cover]">
-          <div
-            className={`${COMIC_STYLES[cover]} right-0 flex flex-col items-center gap-5 absolute w-[120px] h-[441px] transition-all`}
+        <div className="w-[120px] h-full overflow-hidden flex items-center justify-center relative">
+          <p
+            className={`absolute z-[1] top-5 text-3xl [text-shadow:0_0_5px_black] rotate-90 transition-all ${!cover ? 'opacity-0' : 'opacity-100'}`}
           >
-            {COMIC_DATA.map((item, index) => (
-              <Image
-                key={index}
-                alt={`villain-${index}`}
-                src={item.img}
-                width={cover === index ? 120 : 70}
-                height={cover === index ? 185 : 108}
-                className="transition-all"
-              />
-            ))}
+            {'<'}
+          </p>
+          <p
+            className={`absolute z-[1] bottom-5 text-3xl [text-shadow:0_0_5px_black] rotate-90 transition-all ${cover >= COMIC_DATA.length - 1 ? 'opacity-0' : 'opacity-100'}`}
+          >
+            {'>'}
+          </p>
+          <div className="w-full h-full [mask-image:url('/images/mask-vert.png')] [mask-repeat:no-repeat] [mask-size:cover]">
+            <div
+              className={`${COMIC_STYLES[cover]} right-0 flex flex-col items-center gap-5 absolute w-[120px] h-[441px] transition-all`}
+            >
+              {COMIC_DATA.map((item, index) => (
+                <Image
+                  key={index}
+                  alt={`villain-${index}`}
+                  src={item.img}
+                  width={cover === index ? 120 : 70}
+                  height={cover === index ? 185 : 108}
+                  className="transition-all"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

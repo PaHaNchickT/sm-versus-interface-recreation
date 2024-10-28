@@ -15,7 +15,17 @@ const Villains = (props: { setCurrentPage: Dispatch<SetStateAction<string>> }): 
   return (
     <>
       <h2 className="text-2xl font-black">Choose villain</h2>
-      <div className="bg-[url('/images/modal-bg.jpg')] h-[300px] w-[500px]">
+      <div className="bg-[url('/images/modal-bg.jpg')] h-[300px] w-[500px] relative flex items-center">
+        <p
+          className={`absolute z-[1] left-5 text-3xl [text-shadow:0_0_5px_black] transition-all ${!villain ? 'opacity-0' : 'opacity-100'}`}
+        >
+          {'<'}
+        </p>
+        <p
+          className={`absolute z-[1] right-5 text-3xl [text-shadow:0_0_5px_black] transition-all ${villain >= VILLAINS_PATH.length - 1 ? 'opacity-0' : 'opacity-100'}`}
+        >
+          {'>'}
+        </p>
         <div className="w-full h-full [mask-image:url('/images/mask.png')] [mask-repeat:no-repeat] [mask-size:cover] [mask-position:center] overflow-hidden flex items-center relative">
           <div className="absolute w-[3px] h-1/5 bg-[#c30000] left-[calc((100%-3px)/2)] top-0 z-[1]"></div>
           <div className="absolute w-[3px] h-1/5 bg-[#c30000] left-[calc((100%-3px)/2)] bottom-0 z-[1]"></div>
