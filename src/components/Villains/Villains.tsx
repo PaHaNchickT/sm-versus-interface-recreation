@@ -1,36 +1,62 @@
 'use client';
 
 import { Button } from '@nextui-org/react';
+import Image from 'next/image';
 import { useState, type ReactElement } from 'react';
 
 const Villains = (): ReactElement => {
   const [villain, setVillain] = useState(4);
-  const temp = ['Scorp', 'Hulk', 'Goblin', 'Unknown', 'Jug', 'Kraven', 'Cat', 'Carnage', 'Robot'];
+  // const temp = [
+  //   "bg-[url('/images/versus-art-scorpion.png')]",
+  //   "bg-[url('/images/versus-art-hulk.png')]",
+  //   "bg-[url('/images/versus-art-goblin.png')]",
+  //   "bg-[url('/images/versus-art-unknown.png')]",
+  //   "bg-[url('/images/versus-art-jug.png')]",
+  //   "bg-[url('/images/versus-art-kraven.png')]",
+  //   "bg-[url('/images/versus-art-cat.png')]",
+  //   "bg-[url('/images/versus-art-carnage.png')]",
+  //   "bg-[url('/images/versus-art-robot.png')]",
+  // ];
+  const temp = [
+    '/images/versus-art-scorpion.png',
+    '/images/versus-art-hulk.png',
+    '/images/versus-art-goblin.png',
+    '/images/versus-art-unknown.png',
+    '/images/versus-art-jug.png',
+    '/images/versus-art-kraven.png',
+    '/images/versus-art-cat.png',
+    '/images/versus-art-carnage.png',
+    '/images/versus-art-robot.png',
+  ];
   const styles = [
-    'left-[calc((100%-810px)/2+360px)]',
-    'left-[calc((100%-810px)/2+270px)]',
-    'left-[calc((100%-810px)/2+180px)]',
-    'left-[calc((100%-810px)/2+90px)]',
-    'left-[calc((100%-810px)/2)]',
-    'left-[calc((100%-810px)/2-90px)]',
-    'left-[calc((100%-810px)/2-180px)]',
-    'left-[calc((100%-810px)/2-270px)]',
-    'left-[calc((100%-810px)/2-360px)]',
+    'left-[calc((100%-840px)/2+360px)]',
+    'left-[calc((100%-840px)/2+270px)]',
+    'left-[calc((100%-840px)/2+180px)]',
+    'left-[calc((100%-840px)/2+90px)]',
+    'left-[calc((100%-840px)/2)]',
+    'left-[calc((100%-840px)/2-90px)]',
+    'left-[calc((100%-840px)/2-180px)]',
+    'left-[calc((100%-840px)/2-270px)]',
+    'left-[calc((100%-840px)/2-360px)]',
   ];
 
   return (
     <>
       <h2>Choose villain</h2>
-      <div className="bg-warning h-[300px] w-[500px] flex items-center relative overflow-hidden">
-        <div className={`${styles[villain]} flex items-center gap-5 absolute w-[810px] transition-all`}>
-          {temp.map((item, index) => (
-            <div
-              key={index}
-              className={`${villain === index ? ' w-[90px] h-[180px]' : 'w-[70px] h-[140px]'} bg-success transition-all`}
-            >
-              {item}
-            </div>
-          ))}
+      <div className="bg-[url('/images/modal-bg.jpg')] h-[300px] w-[500px]">
+        <div className="w-full h-full [mask-image:url('/images/mask.png')] [mask-repeat:no-repeat] [mask-size:cover] [mask-position:center] overflow-hidden flex items-center relative">
+          <div className={`${styles[villain]} flex items-center gap-5 absolute w-[840px] transition-all`}>
+            {temp.map((item, index) => (
+              <Image
+                key={index}
+                alt={`villain-${index}`}
+                src={item}
+                width={villain === index ? 120 : 70}
+                height={villain === index ? 120 : 70}
+                className="transition-all"
+              />
+            ))}
+          </div>
         </div>
       </div>
       <p>A continue Y boss info B back</p>
