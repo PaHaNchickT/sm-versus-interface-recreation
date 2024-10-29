@@ -14,7 +14,7 @@ const Location = (props: {
   setOpacity: Dispatch<SetStateAction<string>>;
 }): ReactElement => {
   const [opacity, setOpacity] = useState('opacity-100');
-  const [cover, setCover] = useState(1);
+  const [cover, setCover] = useState(0);
 
   useEffect(() => {
     setOpacity('opacity-100');
