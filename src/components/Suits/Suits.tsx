@@ -56,6 +56,7 @@ const Suits = (props: {
           </div>
         </div>
         <div className="pb-5 w-full h-full [mask-image:url('/images/mask.png')] [mask-repeat:no-repeat] [mask-size:cover] [mask-position:center] overflow-hidden flex items-end relative">
+          <div className="absolute z-[1] bottom-[-50px] right-[125px] w-0 h-0 border-l-[50px] border-l-transparent border-b-[75px] border-b-[#c30000] border-r-[50px] border-r-transparent"></div>
           <div className={`${SUITS_STYLES[suit]} flex items-end gap-5 absolute w-[519px] h-[120px] transition-all`}>
             {SUITS_DATA.map((item, index) => (
               <Image
@@ -64,7 +65,7 @@ const Suits = (props: {
                 src={item.img}
                 width={250}
                 height={250}
-                className={`transition-all h-auto ${suit === index ? 'w-[117px]' : 'w-[47px]'}`}
+                className={`transition-all h-auto ${suit === index ? 'w-[117px] grayscale-0' : 'w-[47px] grayscale'}`}
               />
             ))}
           </div>
