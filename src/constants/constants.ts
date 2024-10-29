@@ -108,37 +108,37 @@ export const SUIT_STATS = ['power:', 'speed:', 'stealth:'];
 export const SUITS_DATA = [
   {
     name: 'Classic Suit',
-    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    stats: ['w-8/12', 'w-9/12', 'w-1/2'],
     img: '/images/suit-01.png',
   },
   {
     name: 'Noir Suit',
-    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    stats: ['w-1/2', 'w-1/3', 'w-10/12'],
     img: '/images/suit-02.png',
   },
   {
     name: 'Scarlet Spider Suit',
-    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    stats: ['w-9/12', 'w-8/12', 'w-1/2'],
     img: '/images/suit-03.png',
   },
   {
     name: 'Spider-Punk Suit',
-    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    stats: ['w-9/12', 'w-11/12', 'w-5/12'],
     img: '/images/suit-04.png',
   },
   {
     name: 'Spider-Man 2099 Suit',
-    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    stats: ['w-10/12', 'w-9/12', 'w-1/2'],
     img: '/images/suit-05.png',
   },
   {
     name: 'Future Foundation Suit',
-    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    stats: ['w-9/12', 'w-8/12', 'w-1/2'],
     img: '/images/suit-06.png',
   },
   {
     name: 'Bombastic Bag-Man Suit',
-    stats: ['w-1/2', 'w-1/3', 'w-1/2'],
+    stats: ['w-8/12', 'w-1/3', 'w-1/2'],
     img: '/images/suit-07.png',
   },
 ];
